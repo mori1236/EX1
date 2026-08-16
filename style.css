@@ -2,10 +2,40 @@
     border: 0;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
+}
+
+:root{
+    --bg-color: hsl(0, 0%, 10%);
+    --text-color: hsl(0, 0%, 20%);
+    --card-bg: hsl(0, 0%, 90%);
+}
+
+html:has(#theme-toggle:checked){
+    --bg-color: hsl(0, 0%, 98%);
+    --text-color: hsl(0, 0%, 15%);
+    --card-bg: hsl(0, 0%, 90%);
+}
+
+.btn-toggle {
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.icon-sun{display: inline; cursor: pointer;}
+.icon-moon{display: none; cursor: pointer;}
+
+html:has(#theme-toggle:checked) .icon-sun{display: none;}
+html:has(#theme-toggle:checked) .icon-moon{display: inline;}
+
+.btn-toggle:active {
+    transform: scale(0.95);
 }
 
 body{
-    background: hsl(0, 0%, 10%);
+    background: var(--bg-color);
     height: 100vh;
     align-items: center;
     display: flex;
@@ -16,13 +46,46 @@ body{
 .card{
     height: 400px;
     width: 600px;
+    display: grid;
     border-radius: 16px;
-    background: hsl(0, 0%, 90%);
+    background: var(--card-bg);
+    gap: 20px;
+    grid-template-rows: 1fr 2fr auto;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.header{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 20px;
+}
+
+.header-text{
+    align-self: center;
 }
 
 .pesonal-photo{
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
     object-fit: cover; 
     border-radius: 140px;
+}
+
+.link-list{
+    display: flex;
+    list-style-type: none;   
+    padding: 0;              
+    margin: 0;               
+    justify-content: center;
+    gap: 20px;               
+}
+
+.link-photo{
+    width: 24px;
 }
