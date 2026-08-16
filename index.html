@@ -8,18 +8,27 @@
 </head>
 <body>
     <div class="card">
-        <img class="pesonal-photo" src="image.png" alt="איש">
-        <h2>ישראל ישראלי</h2>
-        <h2>סטודנט/ית למדעי המחשב</h2>
+        <div class="header">
+            <img class="pesonal-photo" src="assets/image.png" alt="תמונת פרופיל">
+            <div class="header-text">
+                <h2>ישראל ישראלי</h2>
+                <h3>סטודנט/ית למדעי המחשב</h3>
+            </div>
+            <input type="checkbox" id="theme-toggle" class="theme-checkbox" hidden>
+            <label for="theme-toggle" class="btn-toggle">
+                <img class="icon-sun" src="assets/sun-svgrepo-com.svg" alt="sun" width="24">
+                <img class="icon-moon" src="assets/moon-svgrepo-com.svg" alt="moon" width="24">
+            </label>
+        </div>
         <p>
             
 קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט 
         </p>
-        <ul>
-            <li><a href="https://example.com">קישור לגיט האב</a></li>
-            <li><a href="https://example.com">לינקדאין</a></li>
-            <li><a href="mailto:name@example.com">שלחו לי מייל</a></li>
-            <li><a href="tel:+972501234567">התקשרו אלי</a></li>
+        <ul class="link-list">
+            <li><a href="https://github.com"><img src="assets/github-svgrepo-com.svg" alt="github" class="link-photo"></a></li>
+            <li><a href="https://il.linkedin.com"><img src="assets/linkedin-svgrepo-com.svg" alt="linkedin" class="link-photo"></a></li>
+            <li><a href="mailto:name@example.com"><img src="assets/mail-svgrepo-com.svg" alt="mail" class="link-photo"></a></li>
+            <li><a href="tel:+972501234567"><img src="assets/call-in-svgrepo-com.svg" alt="github" class="link-photo"></a></li>
         </ul>
     </div>
 </body>
