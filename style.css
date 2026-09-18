@@ -59,6 +59,7 @@ body{
     background: var(--card-bg);
     height: 400px;
     width: 680px;
+    max-width: 680px;
     display: grid;
     border-radius: 16px;
     gap: 20px;
@@ -162,4 +163,16 @@ body{
   100% {
     background-position: 0% 50%;
   }
+}
+
+@media (max-width: 900px) {
+    .body{
+        padding: 20px;
+    }
+
+
+    .card{
+        background: var(--card-bg);
+        width: 100%;
+    }
 }
