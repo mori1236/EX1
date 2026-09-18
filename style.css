@@ -3,19 +3,21 @@
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     color: var(--text-color);
-    transition: background 0.3s, color 0.3s;
+    transition: background 0.3s, color 0.3s, fill 0.3s;
 }
 
 :root{
-    --bg-color: hsl(0, 0%, 10%);
-    --text-color: hsl(0, 0%, 20%);
-    --card-bg: hsl(0, 0%, 90%);
+    --bg-color: hsl(0, 0%, 0%);
+    --text-color: hsl(0, 0%, 100%);
+    --card-bg: hsl(0, 0%, 10%);
+    --card-bg-gradient: linear-gradient( 135deg, #FD6585 10%, #0D25B9 100%);
 }
 
 html:has(#theme-toggle:checked){
-    --bg-color: hsl(0, 0%, 98%);
+    --bg-color: hsl(0, 0%, 90%);
     --text-color: hsl(0, 0%, 15%);
-    --card-bg: hsl(0, 0%, 90%);
+    --card-bg: hsl(0, 0%, 98%);
+    --card-bg-gradient: linear-gradient( 135deg, #F0FF00 10%, #58CFFB 100%);;
 }
 
 .btn-toggle {
@@ -24,8 +26,16 @@ html:has(#theme-toggle:checked){
     transition: transform 0.1s;
 }
 
-.icon-sun{display: inline; cursor: pointer;}
-.icon-moon{display: none; cursor: pointer;}
+.icon-sun{
+    display: inline; 
+    cursor: pointer;
+    fill: var(--text-color);
+}
+.icon-moon{
+    display: none; 
+    cursor: pointer;
+    fill: var(--text-color);
+}
 
 html:has(#theme-toggle:checked) .icon-sun{display: none;}
 html:has(#theme-toggle:checked) .icon-moon{display: inline;}
@@ -41,14 +51,16 @@ body{
     display: flex;
     justify-content: center;
     direction: rtl;
+    padding: 20px;
+    box-sizing: border-box; 
 }
 
 .card{
+    background: var(--card-bg);
     height: 400px;
-    width: 600px;
+    width: 680px;
     display: grid;
     border-radius: 16px;
-    background: var(--card-bg);
     gap: 20px;
     grid-template-rows: 1fr 2fr auto;
     padding: 20px;
@@ -83,9 +95,71 @@ body{
     padding: 0;              
     margin: 0;               
     justify-content: center;
-    gap: 20px;               
+    gap: 20px;         
 }
 
 .link-photo{
     width: 24px;
+    height: 24px;
+    fill: var(--text-color);
+}
+
+.animated-box {
+  position: relative;
+  color: white;
+  border-radius: 20px;
+  padding: 4px;
+  z-index: 1;
+}
+
+.animated-box::before {
+  content: '';
+  position: absolute;
+  position: absolute;
+  top: 0; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  border-radius: 20px;
+  background: var(--card-bg-gradient);
+  background-size: 200% 200%;
+  animation: moveGradient 2s ease-in-out infinite;
+}
+
+.animated-box::after {
+  content: '';
+  position: absolute;
+  top: 0; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+  border-radius: 20px;
+  background: var(--card-bg-gradient);
+  background-size: 200% 200%;
+  
+  filter: blur(15px); 
+  opacity: 0.75;
+  
+  transition: transform 0.4s ease, opacity 0.4s ease; 
+  animation: moveGradient 4s ease-in-out infinite;
+}
+
+.animated-box:hover::after {
+  opacity: 1;
+  transform: scale(1.01);
+  filter: blur(20px);
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
